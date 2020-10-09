@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+   android:padding="15dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_width="match_parent"
+    android:text="BANTUAN"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="1.Untuk menginputkan pasien pilih menu PENDAFTARAN ONLINE"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="2.Masukan data pasien pada kolom yang sudah di sediakan, harap isi dengan benar agar data bisa di verifikasi"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="3.Setelah memasukan data pasien kemudian pilih Klinik "
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="4.Kemudian aplikasi akan mengirimkan SMS informasi pendaftaran online"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="5.Untuk mengecek antrian masuk kemenu INFORMASI ANTRIAN"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="6.Pastikan nomor yang sudah di kirim via SMS di ingat baik-baik dan pastikan datang lebih awal dari jam yang sudah di tentukan"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="7.Jika pasien sudah pernah terdaftar langsung pilih pasien baru dan pilih klinik"
+        android:layout_height="wrap_content" />
+</LinearLayout>

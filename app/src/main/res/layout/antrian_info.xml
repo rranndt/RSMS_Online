@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/asd123"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/asd"
+                android:gravity="center"
+                android:text="Nomor Antrian Saat Ini"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/tvnomorsaatini"
+                android:gravity="center"
+                android:layout_below="@+id/asd"
+                android:text="C1"
+                android:textStyle="bold"
+                android:textSize="50dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/asd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/asd123"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:text="Daftar Antrian Yang Anda Miliki :" />
+    <ListView
+        android:id="@+id/myList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/asd2"
+        android:background="#fff" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="0.1dp"
+        android:textColor="#edeaea"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvIduser"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="0.1dp"
+        android:textColor="#edeaea"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvidpasien"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="0.1dp"
+        android:textColor="#edeaea"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvnomor"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="0.1dp"
+        android:textColor="#edeaea"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvidklinik"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="0.1dp"
+        android:textColor="#edeaea"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvnomortelp"/>
+
+    <LinearLayout
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        />
+
+</RelativeLayout>

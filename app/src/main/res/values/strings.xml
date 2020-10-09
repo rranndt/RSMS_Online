@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">RSMS Online</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="panduan1">Tekan Register jika anda belum meliliki akun, jika sudah silakan login dengan mengisi data email dan password</string>
+    <string name="panduan2">Masukan data yang di minta aplikasi dengan benar agar proses pendaftaran mudah</string>
+    <string name="panduan3">Jika sudah mendaftar ,masukan email dan password kemudian Tekan login</string>
+    <string name="panduan4">Lakukan pendaftaran online dengan menekan menu pendaftaran online</string>
+    <string name="panduan5">Isi data calon pasien dengan benar dan jelas</string>
+    <string name="panduan6">Kemudian pilih klinik yang ingin dituju</string>
+    <string name="panduan7">Setelah pendaftaran selesai silakan tekan Informasi Antrian</string>
+    <string name="panduan8">Makan akan muncul informasi antrian saat ini dan nomor antrian anda beserta estimasi jam pelayanan</string>
+    <string name="banner">ca-app-pub-6825386221252111/1111111111</string>
+    <string name="app_id">ca-app-pub-6825386221252111~1111111111</string>
+    <string name="intersial">ca-app-pub-6825386221252111/1111111111</string>
+</resources>

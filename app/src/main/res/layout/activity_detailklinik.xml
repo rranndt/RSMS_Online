@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+<TextView
+    android:layout_width="match_parent"
+    android:text="Nama Klinik :"
+    android:textStyle="bold"
+    android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Klinik Anak"
+        android:id="@+id/tvnamaklinik"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="ID Klinik :"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text=""
+        android:id="@+id/tvidklinik"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Hari Buk/Tutup :"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:stretchColumns="1"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Senin "
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Selasa "
+              android:gravity="center"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Rabu "
+
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Buka"
+                android:textStyle="bold"
+                android:id="@+id/tvsenin"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Buka"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/tvselasa"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Buka"
+                android:textStyle="bold"
+                android:id="@+id/tvrabu"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Kamis :"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Jumat :"
+                android:gravity="center"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Saptu :"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Buka"
+                android:textStyle="bold"
+                android:id="@+id/tvkamis"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Buka"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/tvjumat"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Buka"
+                android:textStyle="bold"
+                android:id="@+id/tvsaptu"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+    </TableLayout>
+        <TextView
+        android:layout_width="match_parent"
+        android:text="Minggu :"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Buka"
+        android:textStyle="bold"
+        android:id="@+id/tvminggu"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:text="Dokter :"
+        android:layout_height="wrap_content" />
+   <TextView
+       android:layout_width="match_parent"
+       android:id="@+id/tvdokter"
+       android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        />
+</LinearLayout>
