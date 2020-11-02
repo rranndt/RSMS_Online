@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#e11e49</color>
-    <color name="colorPrimaryDark">#d92323</color>
+    <color name="colorPrimaryDark">#2C7873</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFF</color>
+    <color name="black">#000</color>
     <color name="bg1">#FFFF</color>
     <color name="bg2">#f27d7d</color>
     <color name="bg3">#e43737</color>
     <color name="bg4">#e12020</color>
+
+    <color name="blue_black">#021c1E</color>
+    <color name="Cadet_blue">#004445</color>
+    <color name="rain">#2C7873</color>
+    <color name="greenery">#6FB98F</color>
+
 </resources>

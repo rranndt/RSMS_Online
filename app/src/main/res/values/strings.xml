@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RSMS Online</string>
+    <string name="app_name">RS Online</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -17,4 +17,52 @@
     <string name="banner">ca-app-pub-6825386221252111/1111111111</string>
     <string name="app_id">ca-app-pub-6825386221252111~1111111111</string>
     <string name="intersial">ca-app-pub-6825386221252111/1111111111</string>
+    <string name="register">Register</string>
+
+    <!--    Logo-->
+    <string name="login_screen_logo">Login Screen Logo</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="register_logo">Register Logo</string>
+
+    <!--    Login / Register Form-->
+    <string name="name">Nama Lengkap</string>
+    <string name="nik">NIK</string>
+    <string name="address">Alamat</string>
+    <string name="phone">No Telp</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <!--    Toast / Form Error-->
+    <string name="toast_not_empty">Field Ini Wajib di Isi</string>
+    <string name="email_not_valid">Pastikan Email Sudah Benar</string>
+    <string name="error_toast_login">Terjadi Kesalahan Server</string>
+    <string name="digit_nik">NIK Harus 16 Digit</string>
+    <string name="digit_phone">Pastikan Nomor Hp Sudah Benar</string>
+    <string name="digit_password">Password Minimal 6 Digit</string>
+
+    <!--    Login / Register-->
+    <string name="login">Masuk</string>
+    <string name="daftar_sekarang">Daftar Sekarang</string>
+    <string name="daftar">Daftar</string>
+    <string name="masuk_sekarang">Masuk Sekarang</string>
+    <string name="lupa_password">Lupa Password ?</string>
+
+    <string name="sudah_punya_akun">Sudah Punya Akun ?</string>
+    <string name="belum_punya_akun">Belum punya akun ?</string>
+
+    <string name="text_login">Masuk untuk mengambil antrian pasien</string>
+    <string name="text_register">Lengkapi form untuk pendaftaran pengguna</string>
+    <string name="form_pendaftaran">Form Daftar Akun</string>
+
+
+    <!--    Toast-->
+    <string name="in_development">Dalam Pengembangan</string>
+    <string name="register_success">Pendaftaran Berhasil</string>
+    <string name="connection_on">Pastikan Tersedia Koneksi Internet</string>
+    <string name="email_duplicated">Email Sudah Digunakan</string>
+
+    <!--    Image Button-->
+    <string name="google_logo">Google Logo</string>
+    <string name="facebook_logo">Facebook Logo</string>
+    <string name="password_confirmation">Konfirmasi Password</string>
 </resources>

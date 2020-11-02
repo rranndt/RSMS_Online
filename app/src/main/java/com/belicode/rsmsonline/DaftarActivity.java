@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.belicode.rsmsonline.helper.ValidEmail;
 import com.belicode.rsmsonline.pdModel.pdModel;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,33 +30,37 @@ import org.json.JSONObject;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class DaftarActivity extends AppCompatActivity {
-    EditText edtnama, edtnip, edtalamat, edtnotelp, edtemail, edtpassword;
-    Button btnDaftar;
+public class DaftarActivity extends AppCompatActivity implements View.OnClickListener {
+    private EditText edtName, edtNik, edtAddress, edtPhone, edtEmail, edtPassword, edtPasswordConfirm;
+    private Button btnDaftar;
+    private TextInputLayout tipName, tipNik, tipAddress, tipPhone, tipEmail, tipPass, tipPassConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar);
-        edtnama = (EditText) findViewById(R.id.input_nama);
-        edtnip = (EditText) findViewById(R.id.input_nip);
-        edtalamat = (EditText) findViewById(R.id.input_alamatl);
-        edtnotelp = (EditText) findViewById(R.id.input_notelp);
-        edtemail = (EditText) findViewById(R.id.input_email);
-        edtpassword = (EditText) findViewById(R.id.input_password);
-        btnDaftar = (Button) findViewById(R.id.btn_daftar);
-        btnDaftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getAkun(edtemail.getText().toString());
-            }
-        });
-        LinearLayout mAdViewLayout = findViewById(R.id.adView);
-        Iklan.TampilkanBanner(getApplicationContext(), mAdViewLayout);
+        edtName = (EditText) findViewById(R.id.edtNameRegister);
+        edtNik = (EditText) findViewById(R.id.edtNikRegister);
+        edtAddress = (EditText) findViewById(R.id.edtAddressRegister);
+        edtPhone = (EditText) findViewById(R.id.edtPhoneRegister);
+        edtEmail = (EditText) findViewById(R.id.edtEmailRegister);
+        edtPassword = (EditText) findViewById(R.id.edtPasswordRegister);
+        edtPasswordConfirm = (EditText) findViewById(R.id.edtPasswordConfirmation);
+        btnDaftar = (Button) findViewById(R.id.btnRegister);
+
+        // TextInputLayout
+        tipName = findViewById(R.id.tipNameRegister);
+        tipNik = findViewById(R.id.tipNikRegister);
+        tipAddress = findViewById(R.id.tipAddressRegister);
+        tipPhone = findViewById(R.id.tipPhoneRegister);
+        tipEmail = findViewById(R.id.tipEmailRegister);
+        tipPass = findViewById(R.id.tipPasswordRegister);
+        tipPassConfirm = findViewById(R.id.tipPasswordConfirmationRegister);
+
+        btnDaftar.setOnClickListener(this);
     }
 
     public void regisUserMining() {
-
         pdModel.pdData(DaftarActivity.this);
         String url = ConfigApp.SERVERAPP + "registrasi_user.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -63,8 +70,6 @@ public class DaftarActivity extends AppCompatActivity {
                         Toast.makeText(DaftarActivity.this, "Succes registrasions...", Toast.LENGTH_LONG).show();
                         pdModel.hideProgressDialog();
                         startActivity(new Intent(DaftarActivity.this, MainActivity.class));
-
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -80,12 +85,12 @@ public class DaftarActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                String email_user = edtemail.getText().toString().trim();
-                String ho_hp = edtnotelp.getText().toString().trim();
-                String nama_user = edtnama.getText().toString();
-                String password = edtpassword.getText().toString();
-                String alamat = edtalamat.getText().toString();
-                String nip = edtnip.getText().toString();
+                String email_user = edtEmail.getText().toString().trim();
+                String ho_hp = edtPhone.getText().toString().trim();
+                String nama_user = edtName.getText().toString();
+                String password = edtPassword.getText().toString();
+                String alamat = edtAddress.getText().toString();
+                String nip = edtNik.getText().toString();
 
                 Map<String, String> params = new Hashtable<String, String>();
 
@@ -146,5 +151,101 @@ public class DaftarActivity extends AppCompatActivity {
 
         RequestQueue requestQueue2 = Volley.newRequestQueue(DaftarActivity.this);
         requestQueue2.add(stringRequest2);
+    }
+
+    @Override
+    public void onClick(View v) {
+        String inputName = edtName.getText().toString().trim();
+        String inputNik = edtNik.getText().toString().trim();
+        String inputAddress = edtAddress.getText().toString().trim();
+        String inputPhone = edtPhone.getText().toString().trim();
+        String inputEmail = edtEmail.getText().toString().trim();
+        String inputPass = edtPassword.getText().toString().trim();
+
+        boolean isEmptyField = false;
+
+        if (v.getId() == R.id.btnRegister) {
+            // Input Name
+            if (TextUtils.isEmpty(inputName)) {
+                isEmptyField = true;
+                tipName.setError(getString(R.string.toast_not_empty));
+            } else {
+                tipName.setError(null);
+            }
+
+            // Input Nik
+            if (TextUtils.isEmpty(inputNik)) {
+                isEmptyField = true;
+                tipNik.setError(getString(R.string.toast_not_empty));
+            } else if (edtNik.length() < 16) {
+                tipNik.setError("NIK Harus 16 Digit");
+                return;
+            } else {
+                tipNik.setError(null);
+            }
+
+            // Input Address
+            if (TextUtils.isEmpty(inputAddress)) {
+                isEmptyField = true;
+                tipAddress.setError(getString(R.string.toast_not_empty));
+            } else {
+                tipAddress.setError(null);
+            }
+
+            // Input Phone Number
+            if (TextUtils.isEmpty(inputPhone)) {
+                isEmptyField = true;
+                tipPhone.setError(getString(R.string.toast_not_empty));
+            } else if (edtPhone.length() < 11) {
+                tipPhone.setError(getString(R.string.digit_phone));
+                return;
+            } else {
+                tipPhone.setError(null);
+            }
+
+            // Input Email
+            if (TextUtils.isEmpty(inputEmail)) {
+                isEmptyField = true;
+                tipEmail.setError(getString(R.string.toast_not_empty));
+            } else if (!ValidEmail.isValidEmail(edtEmail.getText().toString().trim())) {
+                tipEmail.setError(getString(R.string.email_not_valid));
+                return;
+            } else {
+                tipEmail.setError(null);
+            }
+
+            // Input Password
+            if (TextUtils.isEmpty(inputPass)) {
+                isEmptyField = true;
+                tipPass.setError(getString(R.string.toast_not_empty));
+            } else if (edtPassword.length() < 6) {
+                tipPass.setError(getString(R.string.digit_password));
+                return;
+            } else {
+                tipPass.setError(null);
+            }
+
+            if (!edtPassword.getText().toString().equals(edtPasswordConfirm.getText().toString())) {
+                tipPassConfirm.setError("Password Harus Sama");
+                return;
+            } else {
+                tipPassConfirm.setError(null);
+            }
+
+            if (!isEmptyField) {
+                getAkun(edtEmail.getText().toString());
+            }
+        }
+    }
+
+    public void btnLoginNow(View view) {
+        startActivity(new Intent(DaftarActivity.this, MainActivity.class));
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
 }

@@ -60,17 +60,17 @@ public class InputPasienActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inputpasien);
-        edtnama = (EditText) findViewById(R.id.input_nama);
-        edtnip = (EditText) findViewById(R.id.input_nip);
-        edtalamat = (EditText) findViewById(R.id.input_alamatl);
-        edtnotelp = (EditText) findViewById(R.id.input_notelp);
+        edtnama = (EditText) findViewById(R.id.edtNameRegister);
+        edtnip = (EditText) findViewById(R.id.edtNikRegister);
+        edtalamat = (EditText) findViewById(R.id.edtAddressRegister);
+        edtnotelp = (EditText) findViewById(R.id.edtPhoneRegister);
         edttgllahir = (EditText) findViewById(R.id.input_tgl_lahir);
         spJK = (Spinner) findViewById(R.id.sp_jeniskelamin);
         final Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
-        btnDaftar = (Button) findViewById(R.id.btn_daftar);
+        btnDaftar = (Button) findViewById(R.id.btnRegister);
         btntgllahir = (Button) findViewById(R.id.btntgl_lahir);
         btntgllahir.setOnClickListener(new View.OnClickListener() {
             @Override

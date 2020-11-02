@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -141,7 +142,7 @@ public class InfoAntrian extends AppCompatActivity implements ListView.OnItemCli
     }
 
     public void getNomor() {
-        String url = ConfigApp.SERVERAPP + "getnomor.php";
+        String url = ConfigApp.SERVERAPP + "getnomor.php?id_user=" ;
         StringRequest stringRequest2 = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response2) {
@@ -153,8 +154,10 @@ public class InfoAntrian extends AppCompatActivity implements ListView.OnItemCli
                     JSONObject collegeData = result.getJSONObject(0);
                     nama = collegeData.getString("nomor_antrian");
 
+                    Log.e("Antrian", jsonObject.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.e("ANTRIAN2", e.getMessage());
                 }
                 tvnomor_saatini.setText(nama);
                 Toast.makeText(InfoAntrian.this, "nama : " + nama, Toast.LENGTH_SHORT).show();

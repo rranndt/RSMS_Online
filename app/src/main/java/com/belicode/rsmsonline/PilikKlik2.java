@@ -52,6 +52,8 @@ public class PilikKlik2 extends AppCompatActivity implements ListView.OnItemClic
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
+    private String id_klinik;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +141,7 @@ public class PilikKlik2 extends AppCompatActivity implements ListView.OnItemClic
         // Intent intent = new Intent(this, DetailPengumumanActivity.class);
         Klinik p = pList.get(i);
         tvidklinik.setText(p.getId_klinik());
+        id_klinik = p.getId_klinik();
 
         //intent.putExtra(Config.TAG_MAPEL, p.getJudul());
         //intent.putExtra(Config.TAG_KELAS, p.getDetail());
@@ -265,7 +268,7 @@ public class PilikKlik2 extends AppCompatActivity implements ListView.OnItemClic
     }
 
     public void getNomor() {
-        String url =  ConfigApp.SERVERAPP+"getNomorantrian.php";
+        String url =  ConfigApp.SERVERAPP+"getNomorantrian.php?id_klinik=" + id_klinik;
         StringRequest stringRequest2 = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response2) {

@@ -2,7 +2,9 @@ package com.belicode.rsmsonline;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,24 +27,25 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class Akun extends AppCompatActivity {
-    EditText edtnama,edtnip,edtalamat,edtnotelp,edtemail,edtpassword;
+    EditText edtnama, edtnip, edtalamat, edtnotelp, edtemail, edtpassword;
     Button btnDaftar;
-    String id_user="";
+    String id_user = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar);
-        edtnama=(EditText)findViewById(R.id.input_nama);
-        edtnip=(EditText)findViewById(R.id.input_nip);
-        edtalamat=(EditText)findViewById(R.id.input_alamatl);
-        edtnotelp=(EditText)findViewById(R.id.input_notelp);
-        edtemail=(EditText)findViewById(R.id.input_email);
-        edtpassword=(EditText)findViewById(R.id.input_password);
-        btnDaftar=(Button)findViewById(R.id.btn_daftar);
-        Intent intent=getIntent();
-        id_user=intent.getStringExtra("id_akun");
+        edtnama = (EditText) findViewById(R.id.edtNameRegister);
+        edtnip = (EditText) findViewById(R.id.edtNikRegister);
+        edtalamat = (EditText) findViewById(R.id.edtAddressRegister);
+        edtnotelp = (EditText) findViewById(R.id.edtPhoneRegister);
+        edtemail = (EditText) findViewById(R.id.edtEmailRegister);
+        edtpassword = (EditText) findViewById(R.id.edtPasswordRegister);
+        btnDaftar = (Button) findViewById(R.id.btnRegister);
+        Intent intent = getIntent();
+        id_user = intent.getStringExtra("id_akun");
         getAkun();
-        Toast.makeText(Akun.this,id_user,Toast.LENGTH_LONG).show();
+        Toast.makeText(Akun.this, id_user, Toast.LENGTH_LONG).show();
         btnDaftar.setText("Ubdate");
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,16 +55,17 @@ public class Akun extends AppCompatActivity {
         });
 
     }
+
     public void updateuser() {
 
         pdModel.pdData(Akun.this);
-        String url = ConfigApp.SERVERAPP+"updateuser.php";
+        String url = ConfigApp.SERVERAPP + "updateuser.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
                         Toast.makeText(Akun.this, "Succes registrasions...", Toast.LENGTH_LONG).show();
-                      finish();
+                        finish();
                         pdModel.hideProgressDialog();
                     }
                 },
@@ -104,9 +108,10 @@ public class Akun extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(Akun.this);
         requestQueue.add(stringRequest);
     }
+
     public void getAkun() {
         pdModel.pdLogin(Akun.this);
-        String url = ConfigApp.SERVERAPP+"getAkun.php";
+        String url = ConfigApp.SERVERAPP + "getAkun.php";
         StringRequest stringRequest2 = new StringRequest(url + "?id_user=" + id_user, new Response.Listener<String>() {
             @Override
             public void onResponse(String response2) {
@@ -117,7 +122,6 @@ public class Akun extends AppCompatActivity {
                 String alamat = "";
                 String email_user = "";
                 String password = "";
-
 
 
                 try {
@@ -142,8 +146,6 @@ public class Akun extends AppCompatActivity {
                 edtnip.setText(nip);
                 edtnotelp.setText(no_telp);
                 pdModel.hideProgressDialog();
-
-
 
 
             }

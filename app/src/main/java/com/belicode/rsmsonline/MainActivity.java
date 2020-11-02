@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,15 +21,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.belicode.rsmsonline.helper.ValidEmail;
 import com.belicode.rsmsonline.pdModel.pdModel;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
-    EditText edtpass, edtEmail;
-    Button btnLogin, btnDaftar;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private EditText edtPass, edtEmail;
+    private TextInputLayout tipEmail, tipPassword;
+
+    private Button btnLogin;
     String email_user, password_user;
     private static final String PREFS_NAME = "preferences";
     private static final String PREF_EMAIL = "email_user";
@@ -49,30 +54,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edtEmail = (EditText) findViewById(R.id.input_email);
-        edtpass = (EditText) findViewById(R.id.input_password);
-        btnLogin = (Button) findViewById(R.id.btn_login);
-        btnDaftar = (Button) findViewById(R.id.btn_daftar);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginMining();
-            }
-        });
-        btnDaftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DaftarActivity.class);
-                startActivity(intent);
-            }
-        });
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtPass = (EditText) findViewById(R.id.edtPassword);
+        btnLogin = (Button) findViewById(R.id.btn_login);
+
+        tipEmail = findViewById(R.id.tipEmail);
+        tipPassword = findViewById(R.id.tipPassword);
+
+        btnLogin.setOnClickListener(this);
     }
 
     public void loginMining() {
         pdModel.pdLogin(MainActivity.this);
         String url = ConfigApp.SERVERAPP + "loginuser.php";
-        StringRequest stringRequest2 = new StringRequest(url + "?email_user=" + edtEmail.getText().toString().trim() + "&password=" + edtpass.getText().toString().trim(), new Response.Listener<String>() {
+        StringRequest stringRequest2 = new StringRequest(url + "?email_user=" + edtEmail.getText().toString().trim() + "&password=" + edtPass.getText().toString().trim(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response2) {
                 String active = "";
@@ -88,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                if (active.equals(tes)) {
+                if (active.equals("active")) {
                     Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
                     intent.putExtra("email_user", edtEmail.getText().toString());
                     finish();
@@ -118,57 +114,6 @@ public class MainActivity extends AppCompatActivity {
         requestQueue2.add(stringRequest2);
     }
 
-    public void loginMining2() {
-        pdModel.pdLogin(MainActivity.this);
-        String url = ConfigApp.SERVERAPP + "loginuser2.php";
-        StringRequest stringRequest2 = new StringRequest(url + "?no_telp=" + edtEmail.getText().toString().trim() + "&password=" + edtpass.getText().toString().trim(), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response2) {
-                String active = "";
-                try {
-                    JSONObject jsonObject = new JSONObject(response2);
-                    JSONArray result = jsonObject.getJSONArray("content_access");
-                    JSONObject collegeData = result.getJSONObject(0);
-                    active = collegeData.getString("status");
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                if (active.equals("active")) {
-                    Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
-                    intent.putExtra("email_user", email_user);
-                    finish();
-                    startActivity(intent);
-
-                    pdModel.hideProgressDialog();
-                } else if (active.equals("pending")) {
-                    Intent intent = new Intent(MainActivity.this, VerifikasiAkun.class);
-                    intent.putExtra("no_telp", email_user);
-                    finish();
-                    startActivity(intent);
-
-                    pdModel.hideProgressDialog();
-
-                } else {
-                    Toast.makeText(MainActivity.this, "Email atau password salah", Toast.LENGTH_LONG).show();
-                    pdModel.hideProgressDialog();
-                }
-
-
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Not Connections", Toast.LENGTH_LONG).show();
-                        pdModel.hideProgressDialog();
-                    }
-                });
-
-        RequestQueue requestQueue2 = Volley.newRequestQueue(MainActivity.this);
-        requestQueue2.add(stringRequest2);
-    }
 
     @Override
     protected void onPause() {
@@ -189,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Edit and commit
         UnameValue = edtEmail.getText().toString();
-        pass = edtpass.getText().toString();
+        pass = edtPass.getText().toString();
 
         System.out.println("onPause save name: " + UnameValue);
 
@@ -209,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         pass = settings.getString(PREF_PASS, DefaultUnameValue);
 
         edtEmail.setText(UnameValue);
-        edtpass.setText(pass);
+        edtPass.setText(pass);
 
         System.out.println("onResume load name: " + UnameValue);
         System.out.println("onResume load password: " + PasswordValue);
@@ -237,5 +182,61 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void btnGoogle(View view) {
+        Toast.makeText(this, getString(R.string.in_development), Toast.LENGTH_SHORT).show();
+    }
+
+    public void btnFacebook(View view) {
+        Toast.makeText(this, getString(R.string.in_development), Toast.LENGTH_SHORT).show();
+    }
+
+    public void ivForgotPass(View view) {
+        Toast.makeText(this, getString(R.string.in_development), Toast.LENGTH_SHORT).show();
+    }
+
+    public void tvRegisterAccount(View view) {
+        startActivity(new Intent(MainActivity.this, DaftarActivity.class));
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    @Override
+    public void onClick(View v) {
+        String inputEmail = edtEmail.getText().toString().trim();
+        String inputPassword = edtPass.getText().toString().trim();
+
+        boolean isEmptyField = false;
+
+        if (v.getId() == R.id.btn_login) {
+            // Input Email
+            if (TextUtils.isEmpty(inputEmail)) {
+                isEmptyField = true;
+                tipEmail.setError(getString(R.string.toast_not_empty));
+            } else if (!ValidEmail.isValidEmail(edtEmail.getText().toString().trim())) {
+                tipEmail.setError(getString(R.string.email_not_valid));
+                return;
+            } else {
+                tipEmail.setError(null);
+            }
+
+            // Input Password
+            if (TextUtils.isEmpty(inputPassword)) {
+                isEmptyField = true;
+                tipPassword.setError(getString(R.string.toast_not_empty));
+            } else {
+                tipPassword.setError(null);
+            }
+
+            if (!isEmptyField) {
+                loginMining();
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 }

@@ -24,7 +24,7 @@
             android:layout_marginBottom="8dp">
 
             <EditText
-                android:id="@+id/input_nama"
+                android:id="@+id/edtNameRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -39,7 +39,7 @@
             android:layout_marginBottom="8dp">
 
             <EditText
-                android:id="@+id/input_nip"
+                android:id="@+id/edtNikRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -96,7 +96,7 @@
             android:layout_marginBottom="8dp">
 
             <EditText
-                android:id="@+id/input_alamatl"
+                android:id="@+id/edtAddressRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -111,7 +111,7 @@
             android:layout_marginBottom="8dp">
 
             <EditText
-                android:id="@+id/input_notelp"
+                android:id="@+id/edtPhoneRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -120,7 +120,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_daftar"
+            android:id="@+id/btnRegister"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
